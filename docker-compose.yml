@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ALLOW_EMPTY_ROOT_PASSWORD: "yes"
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  phpapp:
+    build:
+      context: .
+    volumes:
+      - ./src:/var/www/html # Ensure the source path is correct
+    environment:
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_PORT: 3306
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
