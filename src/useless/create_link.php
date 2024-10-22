@@ -2,7 +2,7 @@
 $nb = 0;
 $token = sha1(random_int ( 0, 99999999999999999999));
 
-$query = "UPDATE users SET chmod = '".$token."' WHERE mail = '".$this->mail."'"
+$query = "UPDATE users SET chmod = '".$token."' WHERE mail = '".$this->mail."'";
 
 
 // retrieve token
